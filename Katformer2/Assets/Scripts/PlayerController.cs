@@ -13,15 +13,15 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
-    private LevelManager myLevelManager;
+    private LevelController myLevelController;
     private bool isAtGround;
 
 	// Use this for initialization
 	void Start ()
     {
-        // Store reference to the LevelManager object
+        // Store reference to the LevelController object
         // created elsewhere in the current scene
-        myLevelManager = FindObjectOfType<LevelManager>();
+        myLevelController = FindObjectOfType<LevelController>();
 
         // Store reference to the Rigidbody2D component
         // on the current GameObject (Player).
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         // and handle player respawn
         if(collision.tag == "KillPlane")
         {
-            myLevelManager.Respawn();
+            myLevelController.Respawn();
         }
 
         // Check if colliding with the checkpoint
@@ -59,6 +59,24 @@ public class PlayerController : MonoBehaviour {
         if(collision.tag == "Checkpoint")
         {
             respawnPosition = collision.transform.position;
+        }
+    }
+
+    // OnCollisionEnter2D is called when entering any collision
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "MovingPlatform")
+        {
+            transform.parent = collision.transform;
+        }
+    }
+
+    // OnCollisionEnter2D is called when entering any collision
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "MovingPlatform")
+        {
+            transform.parent = null;
         }
     }
 
