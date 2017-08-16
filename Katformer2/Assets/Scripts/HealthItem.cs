@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectiblesController : MonoBehaviour {
+public class HealthItem : MonoBehaviour {
 
-    public int coinValue;
+    public int healthToGive;
 
     private LevelController myLevelController;
 
@@ -22,9 +22,9 @@ public class CollectiblesController : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-            myLevelController.AddCoins(coinValue);
-            //Destroy(gameObject);
+            myLevelController.GiveHealth(healthToGive);
             gameObject.SetActive(false);
         }
     }
+
 }

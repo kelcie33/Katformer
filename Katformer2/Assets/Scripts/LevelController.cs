@@ -18,8 +18,16 @@ public class LevelController : MonoBehaviour {
     public Sprite mySpriteEmpty;
     public int maxHealth;
     public int currentHealth;
+    public bool isInvincible;
+    public int currentLives;
+    public int startingLives;
+    public Text myLivesText;
+    public GameObject myGameOverScreen;
+    public int bonusLifeThreshold;
 
     private bool isRespawning;
+    private RespawnAction[] myRespawnActions;
+    private int coinBonusLifeCount;
 
     // Use this for initialization
     void Start () {
@@ -32,13 +40,28 @@ public class LevelController : MonoBehaviour {
 
         // Set the UI text at the start
         coinText.text = "Coins: " + coinCount;
+
+        // Set the list of respawn actions
+        // to all such actions in the game scene
+        myRespawnActions = FindObjectsOfType<RespawnAction>();
+
+        // Set the current lives to starting lives
+        currentLives = startingLives;
+        myLivesText.text = "Lives x" + currentLives;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(currentHealth == 0 && !isRespawning)
+		if(currentHealth <= 0)
         {
             Respawn();
+        }
+
+        if(coinBonusLifeCount >= bonusLifeThreshold)
+        {
+            currentLives += 1;
+            myLivesText.text = "Lives x" + currentLives;
+            coinBonusLifeCount -= bonusLifeThreshold;
         }
 	}
 
@@ -46,8 +69,28 @@ public class LevelController : MonoBehaviour {
     // allows player to be moved even when it is disabled for respawn
     public void Respawn()
     {
-        isRespawning = true;
-        StartCoroutine("RespawnCoroutine");
+        // Check if we are already respawning and exit the function early
+        // when we are already respawning or have no more lives
+        if(isRespawning || currentLives == 0)
+        {
+            return;
+        }
+
+        currentLives -= 1;
+        myLivesText.text = "Lives x" + currentLives;
+
+        if(currentLives > 0)
+        {
+            isRespawning = true;
+            StartCoroutine("RespawnCoroutine");
+        }
+        else if(currentLives == 0)
+        {
+            myPlayer.gameObject.SetActive(false);
+            Instantiate(myDeathEffect, myPlayer.transform.position,
+                myPlayer.transform.rotation);
+            myGameOverScreen.SetActive(true);
+        }
     }
 
     // Runs in a separate timeline as the normal flow of things
@@ -61,15 +104,24 @@ public class LevelController : MonoBehaviour {
 
         currentHealth = maxHealth;
         UpdateHeartMeter();
+        coinCount = 0;
+        coinBonusLifeCount = 0;
+        coinText.text = "Coins: " + coinCount;
         isRespawning = false;
 
         myPlayer.transform.position = myPlayer.respawnPosition;
         myPlayer.gameObject.SetActive(true);
+        for(int i = 0; i < myRespawnActions.Length; i++)
+        {
+            myRespawnActions[i].gameObject.SetActive(true);
+            myRespawnActions[i].ResetObject();
+        }
     }
 
     public void AddCoins(int coinsToAdd)
     {
         coinCount += coinsToAdd;
+        coinBonusLifeCount += coinsToAdd;
         coinText.text = "Coins: " + coinCount;
     }
 
@@ -77,8 +129,25 @@ public class LevelController : MonoBehaviour {
     // allows health to be updated which is managed only in this file
     public void TakeDamage(int damageToTake)
     {
-        currentHealth = Mathf.Max(currentHealth - damageToTake, 0);
+        if(!isInvincible)
+        {
+            currentHealth = Mathf.Max(currentHealth - damageToTake, 0);
+            UpdateHeartMeter();
+            myPlayer.Knockback();
+        }
+    }
+
+    public void GiveHealth(int healthToGive)
+    {
+        currentHealth += healthToGive;
+        currentHealth = Mathf.Min(currentHealth, 6);
         UpdateHeartMeter();
+    }
+
+    public void GiveLives(int livesToGive)
+    {
+        currentLives += livesToGive;
+        myLivesText.text = "Lives x" + currentLives;
     }
 
     public void UpdateHeartMeter()

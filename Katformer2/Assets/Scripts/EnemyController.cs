@@ -34,7 +34,13 @@ public class EnemyController : MonoBehaviour {
     {
         if(collision.tag == "KillPlane")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        isVisible = false;
     }
 }

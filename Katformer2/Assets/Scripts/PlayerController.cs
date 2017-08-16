@@ -10,14 +10,20 @@ public class PlayerController : MonoBehaviour {
     public float groundCheckRadius;
     public LayerMask groundCheckLayer;
     public Vector3 respawnPosition;
+    public GameObject theStompBox;
+    public float knockbackForce;
+    public float knockbackLength;
+    public float invincibilityLength;
 
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
     private LevelController myLevelController;
     private bool isAtGround;
+    private float knockbackCounter;
+    private float invincibilityCounter;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         // Store reference to the LevelController object
         // created elsewhere in the current scene
@@ -41,7 +47,10 @@ public class PlayerController : MonoBehaviour {
         CheckAtGround();
         CheckHorizontalInput();
         CheckJumpInput();
+        UpdateInvincible();
         UpdateAnimator();
+        UpdateStompBoxActive();
+        UpdateKnockback();
     }
 
     // OnTriggerEnter2D is called when entering any collision trigger
@@ -92,6 +101,13 @@ public class PlayerController : MonoBehaviour {
 
     void CheckHorizontalInput()
     {
+        // Check whether we are in knockback mode
+        // and exit this function early if we are
+        if(knockbackCounter > 0)
+        {
+            return;
+        }
+
         // Check whether the game input horizontal axis
         // is moving to the right.
         if (Input.GetAxisRaw("Horizontal") > 0f)
@@ -125,6 +141,13 @@ public class PlayerController : MonoBehaviour {
         
     void CheckJumpInput()
     {
+        // Check whether we are in knockback mode
+        // and exit this function early if we are
+        if (knockbackCounter > 0)
+        {
+            return;
+        }
+
         // Check whether the button is pressed down for jump
         if (Input.GetButtonDown("Jump") && isAtGround)
         {
@@ -135,11 +158,69 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    void UpdateInvincible()
+    {
+        // Update is invincible to false
+        // when the counter reaches zero
+        if (invincibilityCounter > 0)
+        {
+            invincibilityCounter -= Time.deltaTime;
+        }
+
+        if(invincibilityCounter <= 0)
+        {
+            myLevelController.isInvincible = false;
+        }
+    }
+
     void UpdateAnimator()
     {
         // Update animator values used for transitions
         // using values calculated in this file
         myAnimator.SetFloat("Speed", Mathf.Abs(myRigidbody.velocity.x));
         myAnimator.SetBool("Grounded", isAtGround);
+    }
+
+    void UpdateStompBoxActive()
+    {
+        // Let's enable the stomp box only when falling
+        // so it is disabled when jumping up and when standing on a surface
+        if(myRigidbody.velocity.y < 0f)
+        {
+            theStompBox.SetActive(true);
+        }
+        else
+        {
+            theStompBox.SetActive(false);
+        }
+    }
+
+    public void Knockback()
+    {
+        knockbackCounter = knockbackLength;
+        invincibilityCounter = invincibilityLength;
+        myLevelController.isInvincible = true;
+    }
+
+    void UpdateKnockback()
+    {
+        if(knockbackCounter > 0)
+        {
+            knockbackCounter -= Time.deltaTime;
+            if(transform.localScale.x > 0)
+            {
+                myRigidbody.velocity = new Vector3(
+                    -knockbackForce,
+                    knockbackForce,
+                    0f);
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector3(
+                    knockbackForce,
+                    knockbackForce,
+                    0f);
+            }
+        }
     }
 }
