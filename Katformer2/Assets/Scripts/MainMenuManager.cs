@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour {
 
     public string firstLevelName;
-    public string selectedLevelName;
+    public string selectLevelName;
     public string[] levelNames;
 
     private bool firstTime;
@@ -40,9 +40,9 @@ public class MainMenuManager : MonoBehaviour {
         firstTime = false;
     }
 
-    public void ContinueOption()
+    public void LevelSelectOption()
     {
-        SceneManager.LoadScene(selectedLevelName);
+        SceneManager.LoadScene(selectLevelName);
 
         // Set Player Preferences for other information
         // about the game player
