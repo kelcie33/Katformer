@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndpointObject : MonoBehaviour {
 
+    public string unlockLevelName;
     public string nextLevelName;
     public float endpointMoveDelay;
     public float endpointLoadDelay;
@@ -54,11 +55,14 @@ public class EndpointObject : MonoBehaviour {
         myPlayer.myRigidbody.velocity = new Vector3(0f, 0f, 0f);
         myLevelManager.myLevelMusic.Stop();
         myLevelManager.myGameOverMusic.Play();
+        PlayerPrefs.SetInt("coinCount", myLevelManager.coinCount);
+        PlayerPrefs.SetInt("currentLives", myLevelManager.currentLives);
+        PlayerPrefs.SetInt(unlockLevelName, 1);
+
         yield return new WaitForSeconds(endpointMoveDelay);
-
         isMovingPlayer = true;
-        yield return new WaitForSeconds(endpointLoadDelay);
 
+        yield return new WaitForSeconds(endpointLoadDelay);
         SceneManager.LoadScene(nextLevelName);
     }
 }

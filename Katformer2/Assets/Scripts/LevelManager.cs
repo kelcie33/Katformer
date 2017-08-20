@@ -39,7 +39,25 @@ public class LevelManager : MonoBehaviour {
 
         // Set the player info at the start
         currentHealth = maxHealth;
-        isRespawning = false;
+
+        // Check PlayerPrefs information
+        // to see if values were set in previous level
+        if (PlayerPrefs.HasKey("coinCount"))
+        {
+            coinCount = PlayerPrefs.GetInt("coinCount");
+        }
+        else
+        {
+            coinCount = 0;
+        }
+        if (PlayerPrefs.HasKey("currentLives"))
+        {
+            currentLives = PlayerPrefs.GetInt("currentLives");
+        }
+        else
+        {
+            currentLives = startingLives;
+        }
 
         // Set the UI text at the start
         coinText.text = "Coins: " + coinCount;
@@ -49,7 +67,6 @@ public class LevelManager : MonoBehaviour {
         myRespawnActions = FindObjectsOfType<RespawnAction>();
 
         // Set the current lives to starting lives
-        currentLives = startingLives;
         myLivesText.text = "Lives x" + currentLives;
 	}
 	
