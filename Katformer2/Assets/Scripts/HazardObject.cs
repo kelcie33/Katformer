@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HazardController : MonoBehaviour {
+public class HazardObject : MonoBehaviour {
 
     public int damageToGive;
 
-    private LevelController myLevelController;
+    private LevelManager myLevelManager;
 
 	// Use this for initialization
 	void Start () {
-        myLevelController = FindObjectOfType<LevelController>();
+        myLevelManager = FindObjectOfType<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -26,9 +26,9 @@ public class HazardController : MonoBehaviour {
         if (collision.tag == "Player")
         {
             // Kill and respawn the player
-            //myLevelController.Respawn();
+            //myLevelManager.Respawn();
 
-            myLevelController.TakeDamage(damageToGive);
+            myLevelManager.TakeDamage(damageToGive);
         }
 
     }

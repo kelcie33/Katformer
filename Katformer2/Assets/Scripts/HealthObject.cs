@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectiblesController : MonoBehaviour {
+public class HealthObject : MonoBehaviour {
 
-    public int coinValue;
+    public int healthToGive;
 
-    private LevelController myLevelController;
+    private LevelManager myLevelManager;
 
 	// Use this for initialization
 	void Start () {
-        myLevelController = FindObjectOfType<LevelController>();
+        myLevelManager = FindObjectOfType<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -22,9 +22,9 @@ public class CollectiblesController : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-            myLevelController.AddCoins(coinValue);
-            //Destroy(gameObject);
+            myLevelManager.GiveHealth(healthToGive);
             gameObject.SetActive(false);
         }
     }
+
 }

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  // Text, Image
 
-public class LevelController : MonoBehaviour {
+public class LevelManager : MonoBehaviour {
 
     public float respawnDelay;
     public PlayerController myPlayer;  // one of our scripts
     public GameObject myDeathEffect;
     public int coinCount;
     public Text coinText;
+    public AudioSource coinSound;
     public Image myHeart1;
     public Image myHeart2;
     public Image myHeart3;
@@ -24,6 +25,8 @@ public class LevelController : MonoBehaviour {
     public Text myLivesText;
     public GameObject myGameOverScreen;
     public int bonusLifeThreshold;
+    public AudioSource myLevelMusic;
+    public AudioSource myGameOverMusic;
 
     private bool isRespawning;
     private RespawnAction[] myRespawnActions;
@@ -90,6 +93,8 @@ public class LevelController : MonoBehaviour {
             Instantiate(myDeathEffect, myPlayer.transform.position,
                 myPlayer.transform.rotation);
             myGameOverScreen.SetActive(true);
+            myLevelMusic.Stop();
+            myGameOverMusic.Play();
         }
     }
 
@@ -123,6 +128,7 @@ public class LevelController : MonoBehaviour {
         coinCount += coinsToAdd;
         coinBonusLifeCount += coinsToAdd;
         coinText.text = "Coins: " + coinCount;
+        coinSound.Play();
     }
 
     // Called by the player controller when colliding with hazard
@@ -134,6 +140,7 @@ public class LevelController : MonoBehaviour {
             currentHealth = Mathf.Max(currentHealth - damageToTake, 0);
             UpdateHeartMeter();
             myPlayer.Knockback();
+            myPlayer.hitHurtSound.Play();
         }
     }
 
@@ -142,12 +149,14 @@ public class LevelController : MonoBehaviour {
         currentHealth += healthToGive;
         currentHealth = Mathf.Min(currentHealth, 6);
         UpdateHeartMeter();
+        coinSound.Play();
     }
 
     public void GiveLives(int livesToGive)
     {
         currentLives += livesToGive;
         myLivesText.text = "Lives x" + currentLives;
+        coinSound.Play();
     }
 
     public void UpdateHeartMeter()

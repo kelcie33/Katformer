@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckpointController : MonoBehaviour {
+public class CheckpointObject : MonoBehaviour {
 
     public Sprite flagClosedSprite;
     public Sprite flagOpenSprite;

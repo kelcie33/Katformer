@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObjectController : MonoBehaviour {
+public class MovingObject : MonoBehaviour {
 
     public GameObject movingObject;
     public Transform startLocation;

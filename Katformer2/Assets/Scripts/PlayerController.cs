@@ -14,20 +14,26 @@ public class PlayerController : MonoBehaviour {
     public float knockbackForce;
     public float knockbackLength;
     public float invincibilityLength;
+    public AudioSource jumpSound;
+    public AudioSource hitHurtSound;
+    public float onPlatformSpeedModifier;
+    public bool isMovable;
+    public Rigidbody2D myRigidbody;
 
-    private Rigidbody2D myRigidbody;
     private Animator myAnimator;
-    private LevelController myLevelController;
+    private LevelManager myLevelManager;
     private bool isAtGround;
     private float knockbackCounter;
     private float invincibilityCounter;
+    private bool isOnPlatform;
+    private float activeMoveSpeed;
 
     // Use this for initialization
     void Start ()
     {
-        // Store reference to the LevelController object
+        // Store reference to the LevelManager object
         // created elsewhere in the current scene
-        myLevelController = FindObjectOfType<LevelController>();
+        myLevelManager = FindObjectOfType<LevelManager>();
 
         // Store reference to the Rigidbody2D component
         // on the current GameObject (Player).
@@ -40,6 +46,10 @@ public class PlayerController : MonoBehaviour {
         // Update the respawn position
         // so it is initially the same as first player position
         respawnPosition = transform.position;
+
+        activeMoveSpeed = moveSpeed;
+
+        isMovable = true;
     }
 	
 	// Update is called once per frame
@@ -60,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         // and handle player respawn
         if(collision.tag == "KillPlane")
         {
-            myLevelController.Respawn();
+            myLevelManager.Respawn();
         }
 
         // Check if colliding with the checkpoint
@@ -77,6 +87,7 @@ public class PlayerController : MonoBehaviour {
         if(collision.gameObject.tag == "MovingPlatform")
         {
             transform.parent = collision.transform;
+            isOnPlatform = true;
         }
     }
 
@@ -86,6 +97,7 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.tag == "MovingPlatform")
         {
             transform.parent = null;
+            isOnPlatform = false;
         }
     }
 
@@ -103,9 +115,18 @@ public class PlayerController : MonoBehaviour {
     {
         // Check whether we are in knockback mode
         // and exit this function early if we are
-        if(knockbackCounter > 0)
+        if(knockbackCounter > 0 || !isMovable)
         {
             return;
+        }
+
+        if(isOnPlatform)
+        {
+            activeMoveSpeed = moveSpeed * onPlatformSpeedModifier;
+        }
+        else
+        {
+            activeMoveSpeed = moveSpeed;
         }
 
         // Check whether the game input horizontal axis
@@ -113,7 +134,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxisRaw("Horizontal") > 0f)
         {
             myRigidbody.velocity = new Vector3(
-                moveSpeed,
+                activeMoveSpeed,
                 myRigidbody.velocity.y,
                 0f);
             transform.localScale = new Vector3(1f, 1f, 1f);
@@ -123,7 +144,7 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetAxisRaw("Horizontal") < 0f)
         {
             myRigidbody.velocity = new Vector3(
-                -moveSpeed,
+                -activeMoveSpeed,
                 myRigidbody.velocity.y,
                 0f);
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -155,6 +176,7 @@ public class PlayerController : MonoBehaviour {
                 myRigidbody.velocity.x,
                 jumpSpeed,
                 0f);
+            jumpSound.Play();
         }
     }
 
@@ -169,7 +191,7 @@ public class PlayerController : MonoBehaviour {
 
         if(invincibilityCounter <= 0)
         {
-            myLevelController.isInvincible = false;
+            myLevelManager.isInvincible = false;
         }
     }
 
@@ -199,7 +221,7 @@ public class PlayerController : MonoBehaviour {
     {
         knockbackCounter = knockbackLength;
         invincibilityCounter = invincibilityLength;
-        myLevelController.isInvincible = true;
+        myLevelManager.isInvincible = true;
     }
 
     void UpdateKnockback()

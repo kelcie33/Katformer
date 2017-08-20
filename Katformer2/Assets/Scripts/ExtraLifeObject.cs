@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthItem : MonoBehaviour {
+public class ExtraLifeObject : MonoBehaviour {
 
-    public int healthToGive;
+    public int livesToGive;
 
-    private LevelController myLevelController;
+    private LevelManager myLevelManager;
 
 	// Use this for initialization
 	void Start () {
-        myLevelController = FindObjectOfType<LevelController>();
+        myLevelManager = FindObjectOfType<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -22,9 +22,8 @@ public class HealthItem : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-            myLevelController.GiveHealth(healthToGive);
+            myLevelManager.GiveLives(livesToGive);
             gameObject.SetActive(false);
         }
     }
-
 }

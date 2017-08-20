@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExtraLifeItem : MonoBehaviour {
+public class CoinObject : MonoBehaviour {
 
-    public int livesToGive;
+    public int coinValue;
 
-    private LevelController myLevelController;
+    private LevelManager myLevelManager;
 
 	// Use this for initialization
 	void Start () {
-        myLevelController = FindObjectOfType<LevelController>();
+        myLevelManager = FindObjectOfType<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,8 @@ public class ExtraLifeItem : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-            myLevelController.GiveLives(livesToGive);
+            myLevelManager.AddCoins(coinValue);
+            //Destroy(gameObject);
             gameObject.SetActive(false);
         }
     }

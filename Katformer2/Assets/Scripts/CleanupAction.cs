@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CleanupController : MonoBehaviour {
+public class CleanupAction : MonoBehaviour {
 
     public float lifetime;
 
