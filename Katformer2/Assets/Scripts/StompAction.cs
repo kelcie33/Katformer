@@ -32,10 +32,23 @@ public class StompAction : MonoBehaviour {
             // when we bounce on another object
             Instantiate(deathEffect, collision.transform.position, collision.transform.rotation);
 
+            // Bounce
             thePlayerRigidbody.velocity = new Vector3(
                 thePlayerRigidbody.velocity.x,
                 bounceForce,
                 0f);
+        }
+        else if(collision.tag == "Boss")
+        {
+            // Bounce
+            thePlayerRigidbody.velocity = new Vector3(
+                thePlayerRigidbody.velocity.x,
+                bounceForce,
+                0f);
+
+            // Now the boss will start taking damage
+            collision.transform.parent.GetComponent<BossController>()
+                .isTakingDamage = true;
         }
     }
 }

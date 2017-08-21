@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour {
     public int bonusLifeThreshold;
     public AudioSource myLevelMusic;
     public AudioSource myGameOverMusic;
+    public bool isRespawnCoroutineActive;
 
     private bool isRespawning;
     private RespawnAction[] myRespawnActions;
@@ -119,6 +120,7 @@ public class LevelManager : MonoBehaviour {
     // and runs longer than a single frame
     public IEnumerator RespawnCoroutine()
     {
+        isRespawnCoroutineActive = true;
         myPlayer.gameObject.SetActive(false);
         Instantiate(myDeathEffect, myPlayer.transform.position, 
             myPlayer.transform.rotation);
@@ -138,6 +140,7 @@ public class LevelManager : MonoBehaviour {
             myRespawnActions[i].gameObject.SetActive(true);
             myRespawnActions[i].ResetObject();
         }
+        isRespawnCoroutineActive = false;
     }
 
     public void AddCoins(int coinsToAdd)
