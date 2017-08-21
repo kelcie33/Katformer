@@ -12,3 +12,7 @@ Udemy Certificate of Completion
 Katformer/Resources/UC-WU5CC73Y.jpg
 <https://github.com/kelcie33/Katformer/raw/master/Resources/UC-WU5CC73Y.jpg>
 
+Katformer Marketing Plan
+Katformer/Resources/Katformer Marketing plan.pdf
+<https://github.com/kelcie33/Katformer/raw/master/Resources/Katformer%20Marketing%20plan.pdf>
+
