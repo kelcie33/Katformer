@@ -7,108 +7,36 @@ Direct3D:
     VRAM:     1136 MB
     Driver:   20.19.15.4568
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.030 seconds
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\work\repos\Katformer\Katformer2\Builds\Katformer-v01_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.040 seconds
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\work\repos\Katformer\Katformer2\Release\Windows\Katformer-v01_Data\Managed\System.dll (this message is harmless)
 desktop: 2160x1440 59Hz; virtual: 2160x1440 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 2.453466 ms
+UnloadTime: 3.979185 ms
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 6.213990 ms
+UnloadTime: 6.002023 ms
 
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1191.
-Total: 0.792088 ms (FindLiveObjects: 0.078093 ms CreateObjectMapping: 0.064259 ms MarkObjects: 0.627423 ms  DeleteObjects: 0.021419 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.142878 ms
-
-Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 805.
-Total: 1.665840 ms (FindLiveObjects: 0.108884 ms CreateObjectMapping: 0.090141 ms MarkObjects: 0.961216 ms  DeleteObjects: 0.504259 ms)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.665394 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1087.
-Total: 0.766206 ms (FindLiveObjects: 0.118701 ms CreateObjectMapping: 0.043285 ms MarkObjects: 0.576551 ms  DeleteObjects: 0.026774 ms)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.917117 ms
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1087.
-Total: 0.697037 ms (FindLiveObjects: 0.137444 ms CreateObjectMapping: 0.049979 ms MarkObjects: 0.499350 ms  DeleteObjects: 0.008478 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.249045 ms
-
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 805.
-Total: 0.743001 ms (FindLiveObjects: 0.074077 ms CreateObjectMapping: 0.041947 ms MarkObjects: 0.477484 ms  DeleteObjects: 0.148600 ms)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.246368 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1338.
-Total: 2.395900 ms (FindLiveObjects: 0.374401 ms CreateObjectMapping: 0.153062 ms MarkObjects: 1.832290 ms  DeleteObjects: 0.035253 ms)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.255332 ms
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1338.
-Total: 0.918376 ms (FindLiveObjects: 0.135659 ms CreateObjectMapping: 0.059350 ms MarkObjects: 0.712656 ms  DeleteObjects: 0.010263 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.748068 ms
-
-Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 805.
-Total: 2.045596 ms (FindLiveObjects: 0.149939 ms CreateObjectMapping: 0.144584 ms MarkObjects: 1.215577 ms  DeleteObjects: 0.533711 ms)
-
-Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.227705 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1381.
-Total: 1.780525 ms (FindLiveObjects: 0.238742 ms CreateObjectMapping: 0.132089 ms MarkObjects: 1.350343 ms  DeleteObjects: 0.057565 ms)
-
-Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.311639 ms
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1381.
-Total: 1.289654 ms (FindLiveObjects: 0.195902 ms CreateObjectMapping: 0.088803 ms MarkObjects: 0.991114 ms  DeleteObjects: 0.012941 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.638292 ms
-
-Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 805.
-Total: 1.730992 ms (FindLiveObjects: 0.129857 ms CreateObjectMapping: 0.105760 ms MarkObjects: 0.951398 ms  DeleteObjects: 0.542190 ms)
-
-Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.241985 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 966.
-Total: 1.792574 ms (FindLiveObjects: 0.303894 ms CreateObjectMapping: 0.206612 ms MarkObjects: 1.222270 ms  DeleteObjects: 0.055780 ms)
-
-Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.133061 ms
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 966.
-Total: 1.473954 ms (FindLiveObjects: 0.160202 ms CreateObjectMapping: 0.108438 ms MarkObjects: 1.185678 ms  DeleteObjects: 0.017849 ms)
+Total: 0.747910 ms (FindLiveObjects: 0.132981 ms CreateObjectMapping: 0.046855 ms MarkObjects: 0.544421 ms  DeleteObjects: 0.022312 ms)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.542388 ms
+UnloadTime: 1.688598 ms
 
-Unloading 61 unused Assets to reduce memory usage. Loaded Objects now: 297.
-Total: 18.558077 ms (FindLiveObjects: 0.136105 ms CreateObjectMapping: 0.102190 ms MarkObjects: 1.144177 ms  DeleteObjects: 17.170696 ms)
+Unloading 70 unused Assets to reduce memory usage. Loaded Objects now: 297.
+Total: 11.028996 ms (FindLiveObjects: 0.048194 ms CreateObjectMapping: 0.049087 ms MarkObjects: 0.373955 ms  DeleteObjects: 10.556421 ms)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 538 -> priority: 1 
-  Thread -> id: 26bc -> priority: 1 
+  Thread -> id: aa4 -> priority: 1 
+  Thread -> id: 374c -> priority: 1 
