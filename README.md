@@ -1,18 +1,18 @@
 # Katformer
 
 Windows
-Katformer/Katformer2/Release/Windows/Katformer-v01.exe
-<https://github.com/kelcie33/Katformer/raw/master/Katformer2/Release/Windows/Katformer-v01.exe>
+/Katformer2/Release/Windows/Katformer-v01-Win.zip
+<https://github.com/kelcie33/Katformer/raw/master/Katformer2/Release/Windows/Katformer-v01-Win.zip>
 
 OSX
-Katformer/Katformer2/Release/OSX/Katformer-Mac.app.zip
+/Katformer2/Release/OSX/Katformer-Mac.app.zip
 <https://github.com/kelcie33/Katformer/raw/master/Katformer2/Release/OSX/Katformer-Mac.app.zip>
 
 Udemy Certificate of Completion
-Katformer/Resources/UC-WU5CC73Y.jpg
+Resources/UC-WU5CC73Y.jpg
 <https://github.com/kelcie33/Katformer/raw/master/Resources/UC-WU5CC73Y.jpg>
 
 Katformer Marketing Plan
-Katformer/Resources/Katformer Marketing plan.pdf
+Resources/Katformer%20Marketing%20plan.pdf
 <https://github.com/kelcie33/Katformer/raw/master/Resources/Katformer%20Marketing%20plan.pdf>
 
